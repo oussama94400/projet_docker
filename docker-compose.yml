@@ -1,31 +1,25 @@
 version: '2.0'
 services:
-  neo4j:
-    image: neo4j
-    ports:
-    - "7474:7474"
-    - "7687:7687"
-    volumes:
-    - /tmp/data_neo4j:/var/lib/neo4j/data
-
   cassandra:
 # changer map  dossier 
     image: cassandra
     ports:
     - "9042:9042"
     volumes:
-    - /tmp/data_cassandra:/var/lib/neo4j/data
+    - /tmp/data_cassandra:/var/lib/cassandra
 
-  cassandra: # changer  dossier 
+  cassandra_web: # changer  dossier 
     image: docker-cassandra-web
+    CASSANDRA_HOST_IP:
+    - "127.0.0.1"
+    CASSANDRA_PORT:
+    - "9042"
     ports:
     - "3000:3000"
-    volumes:
-    - /tmp/data_cassandra_web:/var/lib/neo4j/data
 
-
+    #volumes:
+    #- /tmp/data_cassandra_web:/var/lib/cassandra   
   python: # changer map  dossier 
     build: python # charge en local un csv + envoi a cassandra 
     volumes:
     - /tmp:/var/lib/neo4j/data
-
