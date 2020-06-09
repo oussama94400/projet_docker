@@ -10,8 +10,8 @@ services:
   cassandra_web: # changer  dossier 
     depends_on:
       - cassandra
-    #image: docker-cassandra-web 
-    image: cassandraproject/web
+    image: delermando/docker-cassandra-web:v0.4.0 
+    #image: cassandraproject/web
     ports:
     - "3000:3000"
     environment:
