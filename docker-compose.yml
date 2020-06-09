@@ -22,7 +22,9 @@ services:
   python: # changer map  dossier compiler mettre le docker file ./
     build: python # charge en local un csv + envoi a cassandra 
     volumes:
-    - python:/var/lib/neo4j/data
+    - python:/data/
+    depends_on:
+      - cassandra
 
 volumes:
    cassandra: {}
