@@ -1,7 +1,6 @@
 version: '2.0'
 services:
   cassandra:
-# changer map  dossier 
     image: cassandra
     ports:
     - "9042:9042"
@@ -9,16 +8,17 @@ services:
     - /tmp/data_cassandra:/var/lib/cassandra
 
   cassandra_web: # changer  dossier 
-    image: docker-cassandra-web
-    CASSANDRA_HOST_IP:
-    - "127.0.0.1"
-    CASSANDRA_PORT:
-    - "9042"
+    depends_on:
+      - cassandra
+    image: docker-cassandra-web 
     ports:
     - "3000:3000"
-
-    #volumes:
-    #- /tmp/data_cassandra_web:/var/lib/cassandra   
+    environment:
+      CASSANDRA_HOST_IP: "127.0.0.1"
+      CASSANDRA_PORT: "9042"
+      #CASSANDRA_USER: "cassandra" 
+      #CASSANDRA_PASSWORD: "cassandra"
+    
   python: # changer map  dossier 
     build: python # charge en local un csv + envoi a cassandra 
     volumes:
