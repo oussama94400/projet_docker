@@ -20,7 +20,7 @@ services:
       CASSANDRA_PASSWORD: "cassandra"
     
   python: # changer map  dossier compiler mettre le docker file ./
-    build: python # charge en local un csv + envoi a cassandra 
+    build: . # charge en local un csv + envoi a cassandra 
     volumes:
     - python:/data/
     depends_on:
