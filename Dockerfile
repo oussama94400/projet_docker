@@ -1,5 +1,5 @@
 FROM python:3-alpine
-WORKDIR .
+WORKDIR /data/
 MAINTAINER projet_docker
 COPY envoi_csv.py ./
 RUN apt-get install python-pip3
