@@ -1,6 +1,6 @@
 FROM python:3-alpine
 WORKDIR /data/
-MAINTAINER projet_docker
+MAINTAINER python
 COPY envoi_csv.py ./
 RUN apt-get install python-pip3
 RUN pip3 install cqlsh
