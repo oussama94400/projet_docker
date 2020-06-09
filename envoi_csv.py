@@ -43,15 +43,18 @@ def main():
         )
         """)
 
-    query = SimpleStatement("""
-        INSERT INTO mytable (thekey, col1, col2)
-        VALUES (%(key)s, %(a)s, %(b)s)
-        """, consistency_level=ConsistencyLevel.ONE)
 
-    prepared = session.prepare("""
-        INSERT INTO mytable (thekey, col1, col2)
-        VALUES (?, ?, ?)
-        """)
+   
+
+    #query = SimpleStatement("""
+     #   INSERT INTO mytable (thekey, col1, col2)
+     #   VALUES (%(key)s, %(a)s, %(b)s)
+      #  """, consistency_level=ConsistencyLevel.ONE)
+
+    #prepared = session.prepare("""
+     #   INSERT INTO mytable (thekey, col1, col2)
+      #  VALUES (?, ?, ?)
+      #  """)
 
     for i in range(10):
         log.info("inserting row %d" % i)
@@ -59,8 +62,8 @@ def main():
         session.execute(prepared, ("key%d" % i, 'b', 'b'))
 
     future = session.execute_async("SELECT * FROM mytable")
-    log.info("key\tcol1\tcol2")
-    log.info("---\t----\t----")
+    #log.info("key\tcol1\tcol2")
+    #log.info("---\t----\t----")
 
     try:
         rows = future.result()
@@ -72,6 +75,27 @@ def main():
         log.info('\t'.join(row))
 
     #session.execute("DROP KEYSPACE " + KEYSPACE)
+    
+    
+    
+    with open("movies.csv", "r") as fares:
+    for fare in fares:
+        columns=fare.split(",")
+        film=columns[0]
+        Genre=columns[1]
+        studio=columns[2]
+        audience=columns[3]
+        profie=columns[4]
+        note=columns[5]
+        prix=columns[6]
+        annee=columns[7]
+
+        session.execute(prepared, [pickup,dropoff,distance,fare,p_long,p_lat,d_long,d_lat])
+
+    #closing the file
+    fares.close()
+    #closing Cassandra connection
+    session.shutdown()
 
 if __name__ == "__main__":
     main()
