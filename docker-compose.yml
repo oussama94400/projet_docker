@@ -13,10 +13,12 @@ services:
     links:
       - cassandra
     image: delermando/docker-cassandra-web:v0.4.0 
+    env_file:
+      - .env
     ports:
     - "3000:3000"
     environment:
-      CASSANDRA_HOST_IP: "127.0.0.1"
+      CASSANDRA_HOST_IP: "${host_ip}"
       CASSANDRA_PORT: "9042"
       CASSANDRA_USER: "cassandra" 
       CASSANDRA_PASSWORD: "cassandra"
