@@ -9,7 +9,7 @@ services:
     container_name: "cassandra_v3"
     
 
-  cassandra_web
+  cassandra_web:
     links:
       - cassandra
     image: delermando/docker-cassandra-web:v0.4.0 
