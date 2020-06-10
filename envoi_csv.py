@@ -82,7 +82,7 @@ def main():
         for fare in fares:
             columns=fare.split(",")
             film=columns[0]
-            Genre=columns[1]
+            genres=columns[1]
             studio=columns[2]
             audience=columns[3]
             profie=columns[4]
