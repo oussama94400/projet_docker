@@ -16,7 +16,8 @@ KEYSPACE = "testkeyspace"
 
 
 def main():
-    cluster = Cluster(['127.0.0.1'])
+    cluster = Cluster(['cassandra'])
+    #cluster = Cluster(['127.0.0.1'])
     session = cluster.connect()
 
     log.info("creating keyspace...")
@@ -65,7 +66,7 @@ def main():
     
     prepared = session.prepare("""INSERT INTO testkeyspace.mytable (film, genres, studio, audience, profie, note, prix, annee)VALUES (?, ?, ?, ?, ?, ?, ?, ?)""")
     
-    with open("movies.csv", "r") as fares:
+    with open("/csv/movies.csv", "r") as fares:
         for fare in fares:
             columns=fare.split(",")
             film=columns[0]

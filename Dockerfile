@@ -1,5 +1,5 @@
 FROM python:3-alpine
-WORKDIR /data/
+WORKDIR .
 MAINTAINER python
 COPY envoi_csv.py ./
 #RUN apt-get install python-pip3
