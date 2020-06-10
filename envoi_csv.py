@@ -89,7 +89,7 @@ def main():
             note=columns[5]
             prix=columns[6]
             annee=columns[7]
-            session.execute(prepared, [pickup,dropoff,distance,fare,p_long,p_lat,d_long,d_lat])
+            session.execute(prepared, [film,genres,studio,audience,profie,note,prix,annee])
 
     #closing the file
     fares.close()
