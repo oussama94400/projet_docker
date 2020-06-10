@@ -8,7 +8,7 @@ services:
     - cassandra:/var/lib/cassandra
 
   cassandra_web: # changer  dossier 
-    depends_on:
+    links:
       - cassandra
     image: delermando/docker-cassandra-web:v0.4.0 
     #image: cassandraproject/web
@@ -24,7 +24,7 @@ services:
     build: . # charge en local un csv + envoi a cassandra 
     volumes:
     - python:/data/
-    depends_on:
+    links:
       - cassandra
 
 volumes:
