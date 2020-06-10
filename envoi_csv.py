@@ -56,14 +56,13 @@ def main():
       #  VALUES (?, ?, ?)
       #  """)
 
-    for i in range(10):
-        log.info("inserting row %d" % i)
-        session.execute(query, dict(key="key%d" % i, a='a', b='b'))
-        session.execute(prepared, ("key%d" % i, 'b', 'b'))
+    #for i in range(10):
+    #    log.info("inserting row %d" % i)
+    #    session.execute(query, dict(key="key%d" % i, a='a', b='b'))
+     #   session.execute(prepared, ("key%d" % i, 'b', 'b'))
 
     future = session.execute_async("SELECT * FROM mytable")
-    #log.info("key\tcol1\tcol2")
-    #log.info("---\t----\t----")
+
 
     try:
         rows = future.result()
@@ -90,9 +89,7 @@ def main():
             prix=columns[6]
             annee=columns[7]
             session.execute(prepared, [film,genres,studio,audience,profie,note,prix,annee])
-
-    #closing the file
-    fares.close()
+        fares.close()
     #closing Cassandra connection
     session.shutdown()
 
