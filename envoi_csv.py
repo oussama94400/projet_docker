@@ -29,7 +29,7 @@ def main():
     session.set_keyspace(KEYSPACE)
 
     log.info("creating table...")
-    session.execute("""create table testkeyspace.test (film text PRIMARY KEY, genres text ,studio text,audience int,profie text ,note int, prix text,annee int)""") 
+    session.execute("""create table testkeyspace.test (film text PRIMARY KEY, genres text ,studio text,audience text,profie text ,note text, prix text,annee text)""") 
 
 
    
@@ -63,7 +63,7 @@ def main():
 
     #session.execute("DROP KEYSPACE " + KEYSPACE)
     
-    
+    prepared = session.prepare("""INSERT INTO testkeyspace.test (film, genres, studio, audience, profie, note, prix, annee)VALUES (?, ?, ?, ?, ?, ?, ?, ?)""")
     
     with open("movies.csv", "r") as fares:
         for fare in fares:
