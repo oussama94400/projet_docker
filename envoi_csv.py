@@ -29,8 +29,7 @@ def main():
     session.set_keyspace(KEYSPACE)
 
     log.info("creating table...")
-        session.execute("""create table testkeyspace.test (film text PRIMARY KEY, genres text ,studio text,
-            audience int,profie text ,note int, prix text,annee int)""") 
+    session.execute("""create table testkeyspace.test (film text PRIMARY KEY, genres text ,studio text,audience int,profie text ,note int, prix text,annee int)""") 
     #session.execute("""
     #    CREATE TABLE IF NOT EXISTS mytable (
      #       film text,
