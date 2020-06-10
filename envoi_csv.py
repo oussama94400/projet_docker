@@ -79,18 +79,17 @@ def main():
     
     
     with open("movies.csv", "r") as fares:
-    for fare in fares:
-        columns=fare.split(",")
-        film=columns[0]
-        Genre=columns[1]
-        studio=columns[2]
-        audience=columns[3]
-        profie=columns[4]
-        note=columns[5]
-        prix=columns[6]
-        annee=columns[7]
-
-        session.execute(prepared, [pickup,dropoff,distance,fare,p_long,p_lat,d_long,d_lat])
+        for fare in fares:
+            columns=fare.split(",")
+            film=columns[0]
+            Genre=columns[1]
+            studio=columns[2]
+            audience=columns[3]
+            profie=columns[4]
+            note=columns[5]
+            prix=columns[6]
+            annee=columns[7]
+            session.execute(prepared, [pickup,dropoff,distance,fare,p_long,p_lat,d_long,d_lat])
 
     #closing the file
     fares.close()
