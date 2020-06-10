@@ -6,12 +6,13 @@ services:
     - "9042:9042"
     volumes:
     - cassandra:/var/lib/cassandra
+    container_name: "cassandra_v3"
+    
 
-  cassandra_web: # changer  dossier 
+  cassandra_web
     links:
       - cassandra
     image: delermando/docker-cassandra-web:v0.4.0 
-    #image: cassandraproject/web
     ports:
     - "3000:3000"
     environment:
@@ -19,9 +20,9 @@ services:
       CASSANDRA_PORT: "9042"
       CASSANDRA_USER: "cassandra" 
       CASSANDRA_PASSWORD: "cassandra"
-    
-  python: # changer map  dossier compiler mettre le docker file ./
-    build: . # charge en local un csv + envoi a cassandra 
+    container_name: "cassandra-web_v3"
+  python: 
+    build: . 
     volumes:
     - python:/data/
     links:
